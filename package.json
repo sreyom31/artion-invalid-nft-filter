@@ -29,6 +29,7 @@
     "prettier": "^2.2.1",
     "rawmodel": "^1.33.0",
     "url-exists-nodejs": "^0.1.0",
+    "valid-url": "^1.0.9",
     "web3": "^1.3.5"
   }
 }
