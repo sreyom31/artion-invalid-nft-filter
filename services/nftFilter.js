@@ -113,6 +113,7 @@ const filterNFT = async () => {
           } catch (error) {
             // nft.thumbnailPath = '-'
             nft.thumbnailPath = 'embed'
+            nft.contentType = 'embed'
             nft.imageURL = imageUrl
             if (!nft.name) nft.name = name
             nft.isFiltered = true
