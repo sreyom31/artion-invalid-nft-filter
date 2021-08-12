@@ -9,6 +9,8 @@ const toLowerCase = (val) => {
   else return val
 }
 
+const storagePath = process.env.STORAGE_API_URL
+
 const filterNFT = async () => {
   try {
     let nft = await NFTITEM.findOne({
@@ -87,9 +89,7 @@ const filterNFT = async () => {
         } else {
           // now check if storage service works
           try {
-            let thumbData = await axios.get(
-              `https://storage.artion.io/image/${thumbnail}`,
-            )
+            let thumbData = await axios.get(`${storagePath}${thumbnail}`)
             if (!thumbData) {
               nft.thumbnailPath = '-'
               nft.imageURL = imageUrl
