@@ -11,7 +11,10 @@ const toLowerCase = (val) => {
 
 const filterNFT = async () => {
   try {
-    let nft = await NFTITEM.findOne({ isFiltered: false, thumbnailPath: '-' })
+    let nft = await NFTITEM.findOne({
+      isFiltered: false,
+      thumbnailPath: { $ne: '-' },
+    })
     let uri = nft.tokenURI
     // first check url type
     if (!validUrl.isUri(uri)) {
