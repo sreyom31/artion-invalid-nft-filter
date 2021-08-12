@@ -81,6 +81,7 @@ const filterNFT = async () => {
           )
           await nft.save()
           return
+        } else if (thumbnail == '-') {
         } else {
           // now check if storage service works
           try {
