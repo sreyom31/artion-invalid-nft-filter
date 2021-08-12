@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const NFTITEM = mongoose.Schema(
   {
@@ -6,7 +6,7 @@ const NFTITEM = mongoose.Schema(
     tokenID: { type: Number, required: true },
     tokenURI: { type: String, required: true },
     imageURL: { type: String },
-    thumbnailPath: { type: String, default: '-' },
+    thumbnailPath: { type: String, default: "-" },
     symbol: { type: String },
     name: { type: String }, //for search filter
     owner: { type: String },
@@ -14,10 +14,10 @@ const NFTITEM = mongoose.Schema(
     royalty: { type: Number, default: 0 },
     category: [{ type: String }],
     price: { type: Number, default: 0 }, //for most expensive in payment token
-    paymentToken: { type: String, default: 'ftm' }, // payment erc20 token address
+    paymentToken: { type: String, default: "ftm" }, // payment erc20 token address
     priceInUSD: { type: Number, default: 0 },
     lastSalePrice: { type: Number, default: 0 }, //for highest last sale price
-    lastSalePricePaymentToken: { type: String, default: 'ftm' }, // payment erc20 token address
+    lastSalePricePaymentToken: { type: String, default: "ftm" }, // payment erc20 token address
     lastSalePriceInUSD: { type: Number, default: 0 },
     viewed: { type: Number, default: 0 }, //for mostly viewed
     createdAt: { type: Date }, //for recently created
@@ -26,18 +26,18 @@ const NFTITEM = mongoose.Schema(
     saleEndsAt: { type: Date }, //for auction
     tokenType: { type: Number, default: 721 },
     liked: { type: Number, default: 0, index: true },
-    contentType: { type: String, default: 'image' },
+    contentType: { type: String, default: "image" },
     isAppropriate: { type: Boolean, default: true },
     isFiltered: { type: Boolean, default: false },
   },
   {
     timestamps: true,
-  },
-)
+  }
+);
 NFTITEM.index(
   { tokenURI: 1, tokenID: -1, contractAddress: -1 },
-  { unique: true },
-)
+  { unique: true }
+);
 
 NFTITEM.methods.toSimpleJson = function () {
   return {
@@ -49,7 +49,7 @@ NFTITEM.methods.toSimpleJson = function () {
     viewed: this.viewed,
     liked: this.liked,
     contentType: this.contentType,
-  }
-}
+  };
+};
 
-mongoose.model('NFTITEM', NFTITEM)
+mongoose.model("NFTITEM", NFTITEM);
